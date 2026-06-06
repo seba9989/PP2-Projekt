@@ -1,0 +1,49 @@
+/**
+ * @mainpage Arkanoid
+ *
+ * @brief Klasyczna gra Arkanoid (Breakout) napisana w **C11** z użyciem biblioteki **raylib**.
+ *
+ * @section rozgrywka Rozgrywka
+ * Gracz steruje paletką na dole ekranu, odbijając piłkę w celu zniszczenia
+ * wszystkich cegieł na planszy. Za każdą zniszczoną cegłę przyznawane są punkty.
+ * Gra kończy się, gdy gracz straci wszystkie życia lub zniszczy wszystkie cegły.
+ *
+ * @section sterowanie Sterowanie
+ * - **Strzałki LEWO / PRAWO** – ruch paletką
+ * - **SPACJA** – rozpocznij grę / restart / pauza
+ * - **S** (debug) – dodaj nową piłkę
+ * - **UP / DOWN** (debug) – zwiększ / zmniejsz prędkość piłek
+ * - **R** (debug) – usuń ostatnią piłkę
+ *
+ * @section bonusy Bonusy
+ * Niektóre cegły (10% szans) po zniszczeniu upuszczają bonus:
+ * - @b Multi-piłka – dodaje dwie dodatkowe piłki
+ * - @b Szeroka paletka – zwiększa paletkę o 50% na 10 sekund
+ *
+ * @section budowanie Budowanie
+ * @code
+ * premake5 gmake    # generuje Makefile
+ * make config=debug # kompilacja debug
+ * make config=release # kompilacja release
+ * @endcode
+ * Lub przez Devbox:
+ * @code
+ * devbox run build
+ * devbox run dev    # buduje i uruchamia
+ * @endcode
+ *
+ * @section struktura Struktura projektu
+ * - src/main.c              – punkt wejścia i główna pętla gry
+ * - src/audio/              – system dźwiękowy
+ * - src/entity/ball/        – logika piłki (fizyka odbić, kolizje)
+ * - src/entity/paddle/      – logika paletki (sterowanie, hitbox)
+ * - src/entity/brick/       – siatka cegieł (inicjalizacja, animacja niszczenia)
+ * - src/entity/bonus/       – bonusy (spawn, zbieranie, efekty)
+ * - src/gui/pause/          – menu pauzy
+ *
+ * @section assety Assety
+ * Wszystkie tekstury (PNG) i dźwięki (WAV) znajdują się w katalogu @c assets/.
+ *
+ * @section autor Autor
+ * Projekt na PP2 2025/2026.
+ */

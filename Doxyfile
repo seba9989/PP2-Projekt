@@ -1,26 +1,46 @@
-# Nazwa projektu
-PROJECT_NAME           = "Arkanoid"
+# Doxyfile 1.13+ configuration for Arkanoid project
 
-# Katalog wejściowy (gdzie szukać kodu)
-INPUT                  = ./
+# Projekt
+PROJECT_NAME        = "Arkanoid"
+PROJECT_BRIEF       = "Gra Arkanoid napisana w C11 z u\u017cyciem raylib"
+PROJECT_NUMBER      = 1.0
 
-# Czy przeszukiwać podkatalogi (ball/, gui/ itp.)
-RECURSIVE              = YES
+# Wyj\u015bcie
+OUTPUT_DIRECTORY    = docs/
+HTML_OUTPUT         = html
 
-# Katalog wyjściowy dokumentacji
-OUTPUT_DIRECTORY       = docs/
+# \u0179r\u00f3d\u0142a
+INPUT               = ./src ./docs
+RECURSIVE           = YES
 
-# Generuj HTML (domyślnie YES)
-GENERATE_HTML          = YES
+# Generowanie
+GENERATE_HTML       = YES
+GENERATE_LATEX      = NO
 
-# Generuj LaTeX (możesz wyłączyć jeśli nie potrzebujesz)
-GENERATE_LATEX         = NO
+# Wyci\u0105ganie dokumentacji
+EXTRACT_ALL         = YES
+EXTRACT_STATIC      = YES
+EXTRACT_PRIVATE     = NO
+INLINE_SOURCES      = NO
+SOURCE_BROWSER      = YES
 
-# Wyciągaj dokumentację też z plików .c (nie tylko .h)
-EXTRACT_ALL            = YES
+# Wygl\u0105d HTML
+GENERATE_TREEVIEW   = YES
+DISABLE_INDEX       = NO
+FULL_SIDEBAR        = NO
 
-# Pokaż też funkcje static
-EXTRACT_STATIC         = YES
+# Sortowanie
+CASE_SENSE_NAMES    = YES
+SORT_MEMBER_DOCS    = YES
+SORT_BRIEF_DOCS     = NO
 
-# Język
-OUTPUT_LANGUAGE        = Polish
+# J\u0119zyk
+OUTPUT_LANGUAGE     = Polish
+
+# Optymalizacje dla C
+SHOW_FILES          = YES
+SHOW_NAMESPACES     = NO
+TYPEDEF_HIDES_STRUCT = YES
+
+# Graphviz (opcjonalnie)
+HAVE_DOT            = NO

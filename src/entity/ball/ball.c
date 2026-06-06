@@ -70,7 +70,6 @@ static void SpawnBall(Vector2 position, Vector2 speed, int radius,
 
 /**
  * @brief Tworzy piłkę z domyślnymi ustawieniami.
- * @param position Pozycja startowa lub NULL — wtedy środek ekranu.
  */
 void BallSpawn(Vector2* position) {
   if (ballTexture.id == 0) {
@@ -100,7 +99,6 @@ void BallSpawnConfig(BallConfig cfg) {
 /**
  * @brief Usuwa ostatnie `count` piłek. Jeśli count > ballCount, usuwa
  * wszystkie.
- * @param count Liczba piłek do usunięcia.
  */
 void BallRemove(int count) {
   if (count <= 0) return;
@@ -115,7 +113,6 @@ void BallRemove(int count) {
 /**
  * @brief Ustawia wartości wszystkich istniejących piłek oraz wartości domyślne.
  *        Zachowuje kierunek (znak) prędkości każdej piłki.
- * @param cfg Pola do zmiany — NULL pomija dane pole.
  */
 void BallSetAll(BallConfig cfg) {
   if (cfg.speed && cfg.speed->x > 0.0f && cfg.speed->y > 0.0f) {
@@ -145,8 +142,6 @@ void BallSetAll(BallConfig cfg) {
 /** * @brief Aktualizuje pozycje wszystkich aktywnych piłek, obsługuje odbicia
  * od ścian oraz opcjonalnie od paletki gracza. Koryguje pozycję piłki by nie
  * wchodziła w przeszkody.
- * @param paddleRect Wskaźnik na prostokąt paletki. Jeśli przekazano NULL,
- * kolizja z paletką jest ignorowana.
  */
 void BallUpdateAll(Rectangle* paddleRect) {
   int w = GetScreenWidth();

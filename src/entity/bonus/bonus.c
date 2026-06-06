@@ -2,13 +2,16 @@
 #include "../ball/ball.h"
 #include "../paddle/paddle.h"
 
-#define MAX_BONUSES 10
-#define WIDE_PADDLE_DURATION 10.0f
+#define MAX_BONUSES 10          ///< Maksymalna liczba bonusów na ekranie
+#define WIDE_PADDLE_DURATION 10.0f ///< Czas trwania bonusu szerokiej paletki (sekundy)
 
+/**
+ * @brief Struktura wewnętrzna reprezentująca pojedynczy bonus na ekranie.
+ */
 typedef struct {
-  Vector2 position;
-  BonusType type;
-  bool active;
+  Vector2 position; ///< Aktualna pozycja bonusu
+  BonusType type;   ///< Typ bonusu
+  bool active;      ///< Czy bonus jest aktywny
 } Bonus;
 
 static Bonus bonuses[MAX_BONUSES] = { 0 };
@@ -18,6 +21,9 @@ static float originalPaddleWidth = 100.0f;
 static Texture2D texMultiball;
 static Texture2D texWide;
 
+/**
+ * @brief Ładuje tekstury bonusów i czyści tablicę bonusów.
+ */
 void BonusesInit(void) {
   if (texMultiball.id == 0)
     texMultiball = LoadTexture("assets/bonus_multiball.png");
@@ -26,10 +32,19 @@ void BonusesInit(void) {
   for (int i = 0; i < MAX_BONUSES; i++) bonuses[i].active = false;
 }
 
+/**
+ * @brief Deaktywuje wszystkie bonusy na ekranie.
+ */
 void BonusesClear(void) {
   for (int i = 0; i < MAX_BONUSES; i++) bonuses[i].active = false;
 }
 
+/**
+ * @brief Tworzy nowy bonus w podanej pozycji.
+ * @param x Współrzędna X.
+ * @param y Współrzędna Y.
+ * @param type Typ bonusu.
+ */
 void BonusSpawn(float x, float y, BonusType type) {
   for (int i = 0; i < MAX_BONUSES; i++) {
     if (!bonuses[i].active) {
@@ -41,6 +56,11 @@ void BonusSpawn(float x, float y, BonusType type) {
   }
 }
 
+/**
+ * @brief Aktualizuje pozycje bonusów (spadanie) i sprawdza kolizję z paletką.
+ *        Po zebraniu aktywuje odpowiedni efekt (multi-piłka lub szeroka paletka).
+ * @param paddleRect Prostokąt paletki.
+ */
 void BonusesUpdate(Rectangle paddleRect) {
   if (widePaddleTimer > 0) {
     widePaddleTimer -= GetFrameTime();
@@ -75,6 +95,9 @@ void BonusesUpdate(Rectangle paddleRect) {
   }
 }
 
+/**
+ * @brief Rysuje wszystkie aktywne bonusy oraz wskaźnik czasu trwania szerokiej paletki.
+ */
 void BonusesDraw(void) {
   for (int i = 0; i < MAX_BONUSES; i++) {
     if (!bonuses[i].active) continue;
@@ -103,6 +126,9 @@ void BonusesDraw(void) {
   }
 }
 
+/**
+ * @brief Zwalnia tekstury bonusów.
+ */
 void BonusesCleanup(void) {
   UnloadTexture(texMultiball);
   UnloadTexture(texWide);

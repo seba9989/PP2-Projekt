@@ -2,7 +2,7 @@
 .devbox/
 
 bin/
-docs/
+docs/html/
 
 *.make
 Makefile

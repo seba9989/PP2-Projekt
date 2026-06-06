@@ -1,3 +1,11 @@
+/**
+ * @file main.c
+ * @brief Punkt wejściowy gry i główna pętla stanów.
+ *
+ * Implementuje maszynę stanów: START_MENU -> GAMEPLAY -> GAME_OVER / WIN_SCREEN.
+ * Zawiera inicjalizację okna, assetów i wszystkich systemów gry,
+ * a także pętlę główną z renderowaniem i czyszczenie zasobów przy zamknięciu.
+ */
 #include <stddef.h>
 #include "raylib.h"
 #include "gui/pause/pause.h"
@@ -7,8 +15,25 @@
 #include "entity/bonus/bonus.h"
 #include "audio/audio.h"
 
-typedef enum GameScreen { START_MENU, GAMEPLAY, GAME_OVER, WIN_SCREEN } GameScreen;
+/**
+ * @brief Stany ekranów gry.
+ */
+typedef enum GameScreen {
+  START_MENU,  ///< Ekran tytułowy
+  GAMEPLAY,    ///< Właściwa rozgrywka
+  GAME_OVER,   ///< Ekran końca gry
+  WIN_SCREEN   ///< Ekran wygranej
+} GameScreen;
 
+/**
+ * @brief Główna funkcja — punkt wejścia programu.
+ *
+ * Inicjalizuje okno (800x450, MSAA 4x), audio, tekstury i wszystkie encje.
+ * Uruchamia pętlę gry przy 60 FPS z przełączaniem stanów.
+ * Po zamknięciu okna zwalnia zasoby i kończy działanie.
+ *
+ * @return 0 przy poprawnym zakończeniu.
+ */
 int main(void) {
   // Initialization
   //---------------------------------------------------------

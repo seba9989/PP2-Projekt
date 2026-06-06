@@ -1,3 +1,7 @@
+/**
+ * @file audio.c
+ * @brief Implementacja systemu dźwiękowego.
+ */
 #include "audio.h"
 
 static Sound sndHitPaddle;
@@ -7,6 +11,9 @@ static Sound sndLoseLife;
 static Sound sndGameOver;
 static Sound sndWin;
 
+/**
+ * @brief Inicjalizuje urządzenie audio i ładuje wszystkie 6 dźwięków WAV z katalogu assets/.
+ */
 void AudioInit(void) {
   InitAudioDevice();
 
@@ -18,6 +25,9 @@ void AudioInit(void) {
   sndWin = LoadSound("assets/win.wav");
 }
 
+/**
+ * @brief Odtwarza dźwięk odpowiadający podanemu typowi.
+ */
 void AudioPlay(GameSound sound) {
   switch (sound) {
     case SOUND_HIT_PADDLE:
@@ -41,6 +51,9 @@ void AudioPlay(GameSound sound) {
   }
 }
 
+/**
+ * @brief Zwalnia wszystkie załadowane dźwięki i zamyka urządzenie audio.
+ */
 void AudioCleanup(void) {
   UnloadSound(sndHitPaddle);
   UnloadSound(sndHitWall);

@@ -29,7 +29,6 @@ void PaddleInit(void) {
 
 /**
  * @brief Ustawia nową konfigurację paletki (rozmiar, prędkość, kolor).
- * @param config Struktura zawierająca nowe ustawienia paletki.
  */
 void PaddleSetConfig(PaddleConfig config) {
   paddle.size = config.size;
